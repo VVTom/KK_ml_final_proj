@@ -6,5 +6,6 @@ venv/
 .env/
 env/
 .env
+catboost_info/
 data/
 test.ipynb
