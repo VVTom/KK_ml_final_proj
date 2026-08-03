@@ -8,4 +8,5 @@ env/
 .env
 catboost_info/
 data/
+test.py
 test.ipynb

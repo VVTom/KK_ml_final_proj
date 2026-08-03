@@ -74,19 +74,19 @@ class FeedGet(BaseModel):
         orm_mode = True
 
 
+if __name__ == "__main__":
+    from models import User
 
-from models import User
+    # Создаем обычный объект (например, загружаем из БД)
+    user_obj = User(1, 0, 25, "USA", "New York", 2, "iOS", "ad_campaign")
 
-# Создаем обычный объект (например, загружаем из БД)
-user_obj = User(1, 0, 25, "USA", "New York", 2, "iOS", "ad_campaign")
+    # Конвертируем обычный объект в Pydantic-модель UserGet для валидации и удобной работы
+    user_pydantic = UserGet.model_validate(user_obj, from_attributes=True)
 
-# Конвертируем обычный объект в Pydantic-модель UserGet для валидации и удобной работы
-user_pydantic = UserGet.model_validate(user_obj, from_attributes=True)
-
-# Теперь из Pydantic-модели можно легко получить JSON, словарь или использовать саму модель напрямую
-print(user_pydantic.model_dump_json())  # JSON-строка
-print(user_pydantic.model_dump())  # словарь Python
-print(user_pydantic)  # сам объект модели с удобным доступом к полям
+    # Теперь из Pydantic-модели можно легко получить JSON, словарь или использовать саму модель напрямую
+    print(user_pydantic.model_dump_json())  # JSON-строка
+    print(user_pydantic.model_dump())  # словарь Python
+    print(user_pydantic)  # сам объект модели с удобным доступом к полям
 
 ### Output:
 # {"id":1,"gender":0,"age":25,"country":"USA","city":"New York","exp_group":2,"os":"iOS","source":"ad_campaign"}
