@@ -10,3 +10,4 @@ catboost_info/
 data/
 test.py
 test.ipynb
+database_old.py
